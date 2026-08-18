@@ -16,6 +16,14 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Analytics (GA4)
+
+`.env.example` を `.env.local` にコピーして `NEXT_PUBLIC_GA_ID` を実際の測定ID (`G-XXXXXXXXXX`) に差し替える。GA4は `NODE_ENV === 'production'` かつ `NEXT_PUBLIC_GA_ID` が設定されているときのみ発火する（開発時は発火しない）。
+
+## 印刷物用の短縮URL
+
+配布物ごとにUTM付きリダイレクトを設定している（`next.config.ts` の `shortLinks` 配列）。新しい配布物を増やすときは、その配列に1行追加するだけでよい。
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
