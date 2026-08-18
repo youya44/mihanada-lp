@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
+
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
+const enableGa = process.env.NODE_ENV === "production" && !!gaId;
 
 export const metadata: Metadata = {
   title: "MIHANADA — 体験を、カタチに。",
@@ -29,6 +33,7 @@ export default function RootLayout({
         />
       </head>
       <body>{children}</body>
+      {enableGa && <GoogleAnalytics gaId={gaId!} />}
     </html>
   );
 }
