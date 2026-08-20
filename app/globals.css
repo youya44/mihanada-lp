@@ -181,13 +181,46 @@ button{ font-family:inherit; cursor:pointer; }
     display:grid; place-items:center; width:42px;height:42px;
     background:none;border:1px solid var(--line);border-radius:50%;
   }
-  .nav.on-hero:not(.is-scrolled) .nav-toggle{ border-color:rgba(255,255,255,.5); }
+  /* Hero: give the toggle a subtle dark backdrop so bars stay legible on any image */
+  .nav.on-hero:not(.is-scrolled) .nav-toggle{
+    border-color:rgba(255,255,255,.6);
+    background:rgba(15,28,40,.32);
+    backdrop-filter:blur(8px) saturate(1.05);
+  }
   .nav-toggle span{ width:16px;height:1px;background:var(--ink);position:relative;display:block; }
   .nav-toggle span::before,.nav-toggle span::after{ content:"";position:absolute;left:0;width:16px;height:1px;background:var(--ink); }
   .nav-toggle span::before{ top:-5px; } .nav-toggle span::after{ top:5px; }
   .nav.on-hero:not(.is-scrolled) .nav-toggle span,
   .nav.on-hero:not(.is-scrolled) .nav-toggle span::before,
   .nav.on-hero:not(.is-scrolled) .nav-toggle span::after{ background:#fff; }
+
+  /* --- Mobile menu panel (JS toggles .menu-open and inline-styles .navlinks open) --- */
+  /* Panel container: refined padding + hairline border; JS-set background/shadow stays */
+  .nav.menu-open .navlinks{
+    min-width:220px;
+    padding:14px 22px !important;
+    border:1px solid var(--line-soft);
+    border-radius:4px !important;
+    gap:2px !important;
+  }
+  /* Force dark, readable link colour regardless of .on-hero white override */
+  .nav .navlinks a,
+  .nav.on-hero:not(.is-scrolled) .navlinks a,
+  .nav.menu-open .navlinks a,
+  .nav.on-hero.menu-open:not(.is-scrolled) .navlinks a{
+    color:var(--ink);
+    font-size:15px;
+    letter-spacing:.2em;
+    font-weight:600;
+    padding:12px 4px;
+    line-height:1.4;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav.menu-open .navlinks a:last-child{ border-bottom:0; }
+  /* Hide the sliding underline pseudo — doesn't fit a vertical stack */
+  .nav.menu-open .navlinks a::after{ display:none; }
+  .nav.menu-open .navlinks a:hover,
+  .nav.menu-open .navlinks a:active{ color:var(--accent-deep); }
 }
 
 /* ===========================================================
