@@ -60,7 +60,7 @@
         "jp": "フィッシュレザー",
         "line": "捨てられる魚の皮を、一点物の革製品に。",
         "image": "/images/product-wallet.jpg",
-        "href": "#",
+        "href": "/fish-leather",
         "status": "open"
       },
       {
@@ -126,7 +126,7 @@
       {
         "h": "Service",
         "links": [
-          { "label": "フィッシュレザー", "href": "/#service" },
+          { "label": "フィッシュレザー", "href": "/fish-leather" },
           { "label": "デジタル魚拓", "href": "/digital-gyotaku" },
           { "label": "アート（準備中）", "href": "#service" },
           { "label": "クラウドファンディング", "href": "#crowdfunding" }
