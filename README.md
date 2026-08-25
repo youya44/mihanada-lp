@@ -24,13 +24,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 配布物ごとにUTM付きリダイレクトを設定している（`next.config.ts` の `shortLinks` 配列）。新しい配布物を増やすときは、その配列に1行追加するだけでよい。
 
-| slug | QR貼付媒体 | 遷移先 |
+| slug | QR設置店舗 | 遷移先 |
 |---|---|---|
-| `/a2` | A2 ポスター（大型・壁掛け） | `?utm_source=print&utm_medium=qr&utm_campaign=iki2026&utm_content=a2` |
-| `/a4` | A4 ハンドビル（手渡しチラシ） | `?utm_source=print&utm_medium=qr&utm_campaign=iki2026&utm_content=a4` |
-| `/a6` | A6 フライヤー（ポストカードサイズ） | `?utm_source=print&utm_medium=qr&utm_campaign=iki2026&utm_content=a6` |
+| `/aeon` | イオン店舗設置 | `?utm_source=print&utm_medium=qr&utm_campaign=iki2026&utm_content=aeon` |
+| `/shimano` | シマノ釣具屋設置 | `?utm_source=print&utm_medium=qr&utm_campaign=iki2026&utm_content=shimano` |
 
-GA4 では **集客 → トラフィック獲得** で `source=print` としてまとめて確認でき、**セカンダリディメンション: `セッションの手動コンテンツ (session manual content)`** を追加するとサイズ別の内訳が見える。
+GA4 では **集客 → トラフィック獲得** で `source=print` としてまとめて確認でき、**セカンダリディメンション: `セッションの手動コンテンツ (session manual content)`** を追加すると店舗別の内訳が見える。
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
