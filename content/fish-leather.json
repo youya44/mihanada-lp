@@ -3,6 +3,7 @@
     "eyebrow": "01 — Fish Leather",
     "title": "捨てられるはずの一匹が、\n手のなかの一生ものに。",
     "sub": "壱岐の海で水揚げされた魚の皮を、一枚ずつなめして革へ。\n同じ模様はふたつとない、フィッシュレザーの製品をつくっています。",
+    "image": "/images/fish-leather/hero.jpg",
     "primaryCta": { "label": "オンラインストアへ", "href": "#products" },
     "ghostCta": { "label": "フィッシュレザーとは", "href": "#about" }
   },
@@ -23,12 +24,14 @@
       {
         "jp": "真鯛",
         "en": "Red seabream",
-        "desc": "整った鱗目が美しい、フィッシュレザーの定番。黒染めで、上品な陰影が際立ちます。"
+        "desc": "整った鱗目が美しい、フィッシュレザーの定番。黒染めで、上品な陰影が際立ちます。",
+        "image": "/images/fish-leather/material-tai.jpg"
       },
       {
         "jp": "ヒラマサ",
         "en": "Yellowtail amberjack",
-        "desc": "きめ細かくなめらかな肌ざわり。しなやかで、小物づくりに向いています。"
+        "desc": "きめ細かくなめらかな肌ざわり。しなやかで、小物づくりに向いています。",
+        "image": "/images/fish-leather/material-hiramasa.jpg"
       }
     ]
   },
@@ -56,7 +59,14 @@
         "price": "¥3,800（税込）",
         "size": "約 W30 × H70 mm（仮）",
         "material": "フィッシュレザー（壱岐産 真鯛 / ヒラマサ）、真鍮金具",
-        "desc": "壱岐の海の魚皮からつくった、タグ型のキーホルダー。はじめてのフィッシュレザーに、贈り物に。鍵やバッグに付けるたび、鱗の模様が海の記憶を思い出させてくれます。"
+        "desc": "壱岐の海の魚皮からつくった、タグ型のキーホルダー。はじめてのフィッシュレザーに、贈り物に。鍵やバッグに付けるたび、鱗の模様が海の記憶を思い出させてくれます。",
+        "images": [
+          "/images/fish-leather/keyholder-tag/01.jpg",
+          "/images/fish-leather/keyholder-tag/02.jpg",
+          "/images/fish-leather/keyholder-tag/03.jpg",
+          "/images/fish-leather/keyholder-tag/04.jpg",
+          "/images/fish-leather/keyholder-tag/05.jpg"
+        ]
       },
       {
         "slug": "keyholder-hoop",
@@ -66,27 +76,81 @@
         "price": "¥3,800（税込）",
         "size": "約 φ45 mm（仮）",
         "material": "フィッシュレザー（壱岐産 真鯛 / ヒラマサ）、真鍮金具",
-        "desc": "丸みのあるフープ型のキーホルダー。革の柔らかさが手のひらにやさしく馴染みます。"
+        "desc": "丸みのあるフープ型のキーホルダー。革の柔らかさが手のひらにやさしく馴染みます。",
+        "images": [
+          "/images/fish-leather/keyholder-hoop/01.jpg",
+          "/images/fish-leather/keyholder-hoop/02.jpg",
+          "/images/fish-leather/keyholder-hoop/03.jpg",
+          "/images/fish-leather/keyholder-hoop/04.jpg"
+        ]
       },
       {
-        "slug": "card-case",
-        "name": "名刺入れ",
-        "en": "Card case",
-        "line": "鱗の模様がいちばん映える、仕事の相棒。",
+        "slug": "card-case-tai",
+        "name": "名刺入れ 真鯛",
+        "en": "Card case / Red seabream",
+        "line": "整った鱗目が映える、真鯛の名刺入れ。",
         "price": "¥28,500（税込）",
         "size": "約 W110 × H70 × D12 mm（仮）",
-        "material": "フィッシュレザー（壱岐産 真鯛 / ヒラマサ）、内装 牛革",
-        "desc": "面積が大きい名刺入れは、鱗の模様の力がもっとも映える一品。名刺を差し出すたび、海の景色が話題になります。"
+        "material": "フィッシュレザー（壱岐産 真鯛）、内装 牛革",
+        "desc": "面積が大きい名刺入れは、真鯛の鱗の模様の力がもっとも映える一品。名刺を差し出すたび、海の景色が話題になります。",
+        "images": [
+          "/images/fish-leather/card-case-tai/01.jpg",
+          "/images/fish-leather/card-case-tai/02.jpg",
+          "/images/fish-leather/card-case-tai/03.jpg",
+          "/images/fish-leather/card-case-tai/04.jpg",
+          "/images/fish-leather/card-case-tai/05.jpg"
+        ]
       },
       {
-        "slug": "l-zip-wallet",
-        "name": "L字ファスナー財布",
-        "en": "L-zip wallet",
-        "line": "毎日手に取る場所に、一点物の表情を。",
+        "slug": "card-case-hiramasa",
+        "name": "名刺入れ ヒラマサ",
+        "en": "Card case / Yellowtail amberjack",
+        "line": "きめ細かな肌ざわりの、ヒラマサの名刺入れ。",
+        "price": "¥28,500（税込）",
+        "size": "約 W110 × H70 × D12 mm（仮）",
+        "material": "フィッシュレザー（壱岐産 ヒラマサ）、内装 牛革",
+        "desc": "しなやかで肌ざわりのいいヒラマサ革の名刺入れ。落ち着いた表情で、日々の仕事にそっと寄り添います。",
+        "images": [
+          "/images/fish-leather/card-case-hiramasa/01.jpg",
+          "/images/fish-leather/card-case-hiramasa/02.jpg",
+          "/images/fish-leather/card-case-hiramasa/03.jpg",
+          "/images/fish-leather/card-case-hiramasa/04.jpg",
+          "/images/fish-leather/card-case-hiramasa/05.jpg"
+        ]
+      },
+      {
+        "slug": "l-zip-wallet-tai",
+        "name": "L字ファスナー財布 真鯛",
+        "en": "L-zip wallet / Red seabream",
+        "line": "毎日の相棒に、真鯛の一点物の表情を。",
         "price": "¥38,500（税込）",
         "size": "約 W110 × H85 × D18 mm（仮）",
-        "material": "フィッシュレザー（壱岐産 真鯛 / ヒラマサ）、内装 牛革、YKKファスナー",
-        "desc": "小ぶりで扱いやすいL字ファスナー財布。手のひらに海の記憶を、毎日連れて歩ける一点です。"
+        "material": "フィッシュレザー（壱岐産 真鯛）、内装 牛革、YKKファスナー",
+        "desc": "小ぶりで扱いやすいL字ファスナー財布。真鯛の鱗模様を手のひらに、毎日連れて歩ける一点です。",
+        "images": [
+          "/images/fish-leather/l-zip-wallet-tai/01.jpg",
+          "/images/fish-leather/l-zip-wallet-tai/02.jpg",
+          "/images/fish-leather/l-zip-wallet-tai/03.jpg",
+          "/images/fish-leather/l-zip-wallet-tai/04.jpg",
+          "/images/fish-leather/l-zip-wallet-tai/05.jpg"
+        ]
+      },
+      {
+        "slug": "l-zip-wallet-hiramasa",
+        "name": "L字ファスナー財布 ヒラマサ",
+        "en": "L-zip wallet / Yellowtail amberjack",
+        "line": "毎日の相棒に、ヒラマサのしなやかな表情を。",
+        "price": "¥38,500（税込）",
+        "size": "約 W110 × H85 × D18 mm（仮）",
+        "material": "フィッシュレザー（壱岐産 ヒラマサ）、内装 牛革、YKKファスナー",
+        "desc": "小ぶりで扱いやすいL字ファスナー財布。ヒラマサ革のきめ細かな質感を、手のひらに毎日連れて歩ける一点です。",
+        "images": [
+          "/images/fish-leather/l-zip-wallet-hiramasa/01.jpg",
+          "/images/fish-leather/l-zip-wallet-hiramasa/02.jpg",
+          "/images/fish-leather/l-zip-wallet-hiramasa/03.jpg",
+          "/images/fish-leather/l-zip-wallet-hiramasa/04.jpg",
+          "/images/fish-leather/l-zip-wallet-hiramasa/05.jpg"
+        ]
       }
     ]
   },

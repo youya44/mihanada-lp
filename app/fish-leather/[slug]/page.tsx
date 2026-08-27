@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import copy from "../../../content/copy.json";
 import fl from "../../../content/fish-leather.json";
 import ClientFX from "../../ClientFX";
+import Gallery from "./Gallery";
 
 const LINE_URL =
   process.env.NEXT_PUBLIC_LINE_URL ?? "https://line.me/R/ti/p/@mihanada";
@@ -43,16 +44,6 @@ function BrandLogo() {
     />
   );
 }
-
-function LeatherPlaceholder({ label }: { label: string }) {
-  return (
-    <div className="fl-ph" role="img" aria-label={label}>
-      <span>{label}</span>
-    </div>
-  );
-}
-
-const thumbLabels = ["正面", "裏面", "鱗の質感", "使用イメージ"];
 
 export default async function ProductDetailPage({
   params,
@@ -128,18 +119,7 @@ export default async function ProductDetailPage({
         <section className="section fl-detail" data-screen-label="Product">
           <div className="wrap">
             <div className="fl-detail-grid">
-              <div className="fl-gallery reveal">
-                <div className="fl-gallery-main">
-                  <LeatherPlaceholder label={`${product.name}（メイン）`} />
-                </div>
-                <div className="fl-gallery-thumbs">
-                  {thumbLabels.map((t) => (
-                    <div key={t} className="fl-thumb">
-                      <LeatherPlaceholder label={t} />
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <Gallery images={product.images} name={product.name} />
 
               <div className="fl-detail-info reveal reveal-d1">
                 <p className="eyebrow">
@@ -210,7 +190,9 @@ export default async function ProductDetailPage({
                   href={`/fish-leather/${p.slug}`}
                   className={`fl-card reveal reveal-d${Math.min(i + 1, 4)}`}
                 >
-                  <LeatherPlaceholder label={p.name} />
+                  <div className="fl-card-media">
+                    <img src={p.images[0]} alt={p.name} />
+                  </div>
                   <div className="body">
                     <h3>{p.name}</h3>
                     <p className="price">{p.price}</p>
