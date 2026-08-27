@@ -5,7 +5,7 @@ import fl from "../../content/fish-leather.json";
 import ClientFX from "../ClientFX";
 
 const LINE_URL =
-  process.env.NEXT_PUBLIC_LINE_URL ?? "https://line.me/R/ti/p/@mihanada";
+  process.env.NEXT_PUBLIC_LINE_URL ?? "https://lin.ee/xoSEDWK";
 
 export const metadata: Metadata = {
   title: "フィッシュレザー — Fish Leather | MIHANADA",

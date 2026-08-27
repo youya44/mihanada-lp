@@ -7,7 +7,7 @@ import ClientFX from "../../ClientFX";
 import Gallery from "./Gallery";
 
 const LINE_URL =
-  process.env.NEXT_PUBLIC_LINE_URL ?? "https://line.me/R/ti/p/@mihanada";
+  process.env.NEXT_PUBLIC_LINE_URL ?? "https://lin.ee/xoSEDWK";
 
 type Params = { slug: string };
 
