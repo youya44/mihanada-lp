@@ -3,7 +3,7 @@ import copy from "../../content/copy.json";
 import ClientFX from "../ClientFX";
 
 const LINE_URL =
-  process.env.NEXT_PUBLIC_LINE_URL ?? "https://line.me/R/ti/p/@mihanada";
+  process.env.NEXT_PUBLIC_LINE_URL ?? "https://lin.ee/xoSEDWK";
 
 export const metadata: Metadata = {
   title: "デジタル魚拓 — Gyotaku | MIHANADA",
