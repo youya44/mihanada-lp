@@ -358,6 +358,14 @@ button{ font-family:inherit; cursor:pointer; }
 .btn.is-ghost{ background:transparent; color:var(--ink); border-color:var(--line); }
 .btn.is-ghost:hover{ border-color:var(--accent); background:transparent; }
 .on-deep .btn.is-ghost{ color:var(--on-deep); border-color:var(--line-deep); }
+.btn.is-soon{
+  background:transparent; color:rgba(255,255,255,.72); border-color:rgba(255,255,255,.32);
+  cursor:default; pointer-events:none; letter-spacing:.14em;
+}
+.btn.is-soon:hover{ transform:none; gap:.8em; background:transparent; }
+/* on light surfaces (product detail) */
+.fl-detail-cta .btn.is-soon,
+.section:not(.deep):not(.dg-final) .btn.is-soon{ color:var(--ink-faint); border-color:var(--line); background:transparent; }
 .cf-note{ font-size:12px; letter-spacing:.05em; color:var(--on-deep-soft); }
 
 [data-cf="live"] .cf-soon{ display:none; }

@@ -130,10 +130,9 @@ export default async function ProductDetailPage({
                 <p className="fl-detail-desc">{product.desc}</p>
 
                 <div className="fl-detail-cta">
-                  <a className="btn" href="#">
-                    オンラインストアで購入する{" "}
-                    <span aria-hidden="true">→</span>
-                  </a>
+                  <span className="btn is-soon" aria-disabled="true">
+                    オンラインストア（準備中）
+                  </span>
                   <a
                     className="btn is-ghost"
                     href={LINE_URL}

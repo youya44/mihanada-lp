@@ -107,10 +107,9 @@ export default function FishLeatherPage() {
                     flexWrap: "wrap",
                   }}
                 >
-                  <a className="btn" href={fl.hero.primaryCta.href}>
-                    {fl.hero.primaryCta.label}{" "}
-                    <span aria-hidden="true">→</span>
-                  </a>
+                  <span className="btn is-soon" aria-disabled="true">
+                    {fl.hero.primaryCta.label}
+                  </span>
                   <a
                     className="btn is-ghost"
                     href={fl.hero.ghostCta.href}
@@ -307,9 +306,9 @@ export default function FishLeatherPage() {
             </h2>
             <p>{fl.finalCta.lead}</p>
             <div className="cta-wrap">
-              <a className="btn" href={fl.finalCta.cta.href}>
-                {fl.finalCta.cta.label} <span aria-hidden="true">→</span>
-              </a>
+              <span className="btn is-soon" aria-disabled="true">
+                {fl.finalCta.cta.label}
+              </span>
             </div>
           </div>
         </section>
