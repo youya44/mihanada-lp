@@ -31,14 +31,6 @@ function BrandLogo() {
   );
 }
 
-function LeatherPlaceholder({ label }: { label: string }) {
-  return (
-    <div className="fl-ph" role="img" aria-label={label}>
-      <span>{label}</span>
-    </div>
-  );
-}
-
 export default function FishLeatherPage() {
   return (
     <>
@@ -85,7 +77,7 @@ export default function FishLeatherPage() {
         {/* HERO */}
         <section className="hero fl-hero" data-screen-label="Hero">
           <div className="hero-media fl-hero-media" data-parallax>
-            <div className="fl-hero-bg" aria-hidden="true" />
+            <img src={fl.hero.image} alt="" />
           </div>
           <div className="hero-copy">
             <div className="wrap">
@@ -174,7 +166,9 @@ export default function FishLeatherPage() {
                   key={m.jp}
                   className={`fl-mat reveal reveal-d${Math.min(i + 1, 4)}`}
                 >
-                  <LeatherPlaceholder label={`${m.jp}の革`} />
+                  <div className="fl-mat-media">
+                    <img src={m.image} alt={`${m.jp}の革`} />
+                  </div>
                   <span className="en">{m.en}</span>
                   <h3 className="jp">{m.jp}</h3>
                   <p className="d">{m.desc}</p>
@@ -227,7 +221,9 @@ export default function FishLeatherPage() {
                   href={`/fish-leather/${p.slug}`}
                   className={`fl-card reveal reveal-d${Math.min(i + 1, 4)}`}
                 >
-                  <LeatherPlaceholder label={p.name} />
+                  <div className="fl-card-media">
+                    <img src={p.images[0]} alt={p.name} />
+                  </div>
                   <div className="body">
                     <span className="en">{p.en}</span>
                     <h3>{p.name}</h3>
