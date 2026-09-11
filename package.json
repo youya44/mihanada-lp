@@ -8,7 +8,9 @@
     "start": "next start",
     "post": "tsx --env-file=.env.local scripts/post-blog.ts",
     "delete": "tsx --env-file=.env.local scripts/delete-blog.ts",
-    "line:rich-menu": "tsx --env-file=.env.local scripts/setup-line-rich-menu.ts"
+    "line:rich-menu": "tsx --env-file=.env.local scripts/setup-line-rich-menu.ts",
+    "line:check": "tsx --env-file=.env.local scripts/check-line-connection.ts",
+    "test:line": "node --import tsx --test tests/line.test.ts"
   },
   "dependencies": {
     "@next/third-parties": "^16.3.1",

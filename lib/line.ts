@@ -74,7 +74,6 @@ function serviceFlex(input: {
             size: "xs",
             color: "#4D7C9C",
             weight: "bold",
-            letterSpacing: "1px",
           },
           {
             type: "text",
@@ -207,7 +206,7 @@ export function consultationReply(text: string) {
       text: "フィッシュレザーの商品についてのお問い合わせですね。\n\n気になっている商品名や、色・在庫・お受け取り方法など、知りたいことをこのトークにお送りください。確認してご案内します。",
     };
   }
-  if (text === "フィッシュレザーのオーダーメイドを相談したい") {
+  if (text === "フィッシュレザーのオーダーメイドを相談したい" || text === "フィッシュレザーを相談したい") {
     return {
       type: "text",
       text: "フィッシュレザーのオーダーメイドをご検討ですね。\n\n分かる範囲で、魚種・サイズ・魚をお持ちかどうか・作りたいものをお送りください。魚の皮全体が分かる写真もあわせていただけると、進め方をご案内しやすくなります。",

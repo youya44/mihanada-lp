@@ -33,12 +33,20 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
   }
 
-  const payload = JSON.parse(body) as { events?: LineEvent[] };
-  const events = payload.events ?? [];
+  let payload: { events?: LineEvent[] };
+  try {
+    payload = JSON.parse(body);
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+  }
+  if (!payload || !Array.isArray(payload.events)) {
+    return NextResponse.json({ error: "Invalid events" }, { status: 400 });
+  }
+  const events = payload.events;
 
   await Promise.all(
     events.map(async (event) => {
-      if (!event.replyToken) return;
+      if (!event || !event.replyToken) return;
 
       if (event.type === "postback") {
         const response = menuResponse(getPostbackAction(event.postback?.data) ?? "");
@@ -58,6 +66,7 @@ export async function POST(request: Request) {
           text === "デジタル魚拓を相談したい" ||
           text === "フィッシュレザーの商品について問い合わせたい" ||
           text === "フィッシュレザーのオーダーメイドを相談したい" ||
+          text === "フィッシュレザーを相談したい" ||
           text === "その他の相談をしたい"
         ) {
           await replyLine(event.replyToken, [consultationReply(text)]);
