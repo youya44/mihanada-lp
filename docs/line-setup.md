@@ -28,11 +28,16 @@
 ## 公開と接続の順番
 
 1. 作業ブランチのPRを `youya44` がレビューし、Squash and mergeする。
-   mainへのマージだけでProductionへ反映する。プレビューデプロイは作らない。
-2. 公開プロジェクト `mihanada-lp` のVercel Production環境変数に、対象チャネルの
-   `LINE_CHANNEL_SECRET` と `LINE_CHANNEL_ACCESS_TOKEN` を登録する。
-   値はチャット・PR・GitHubへ貼らない。変更がProductionのデプロイに反映されていることを確認する。
-3. LINE DevelopersのWebhook URLを `https://www.mihanada.site/api/line/webhook` に設定し、検証を実行する。
+   プレビューデプロイは作らない。ホームページのVercel設定・ドメイン・DNSは維持する。
+2. `npm ci`、`npm run test:line`、`npm run line:build` を実行する。
+   Cloudflareの対象アカウントでWranglerへログインし、mainのコードを `npm run line:deploy` で公開する。
+   `wrangler.jsonc` の `mihanada-line` Workerのみが対象。Next.js全体の移転は不要。
+   公開後、`npx wrangler secret put LINE_CHANNEL_SECRET` と
+   `npx wrangler secret put LINE_CHANNEL_ACCESS_TOKEN` で対象チャネルの値を登録する。
+   シークレットはチャット・PR・GitHubへ貼らない。未設定時はWebhookと `/health` が503を返す。
+3. 公開時に返る `https://mihanada-line.<account-subdomain>.workers.dev` の `/health` が200であることを確認する。
+   このURLに `/api/line/webhook` を付けたものをLINE DevelopersのWebhook URLに設定し、検証を実行する。
+   `.env.local` の `LINE_WEBHOOK_URL` にも同じ実URLを設定する（プレースホルダーは使わない）。
 4. WebhookをON。あいさつメッセージとチャットはONのまま、重複する汎用自動応答はOFFにする。
 5. ローカルの `.env.local`（Git管理外）に `.env.example` のLINE項目を設定し、`npm run line:check` を実行。
    対象アカウント、Flex全種類、相談文、メニューJSON、公開Webhookと有効状態を検証する。
@@ -51,11 +56,24 @@ API作成のメニューはManager作成メニューと管理が別。APIの既�
 ## コード検証
 
 `npm run test:line` で署名検証、空イベント、各メニュー、相談ボタン、postback、有人対応との併用を検証する。
-返信APIはモック化し、実際のLINEへ送信しない。`npm run build` で本番ビルドを確認する。
+返信APIはモック化し、実際のLINEへ送信しない。`npm run line:build` でWorkersのバンドルを、`npm run build` でホームページの本番ビルドを確認する。
 
 ## 保管場所
 
-現在、Webhook・Flexは `mihanada-lp` に残っている。`gyotaku-app` への移行は別途構成を決めてから行う。
+Webhook・Flexのソースは `mihanada-lp` で管理し、実行先をCloudflare Workersへ分離する。
+`workers/line.ts` が公開入口、`lib/line-webhook.ts` がWeb Crypto署名検証・応答処理、`lib/line.ts` が共通メッセージ。
+旧Next.jsルートは互換入口として残すが、LINEにはWorkersのURLを登録する。
 魚拓注文フォーム、LINEログイン、決済、納品連携は今回のメニュー接続とは別の実装範囲。
 
 参考: [LINE公式のリッチメニュー設定](https://developers.line.biz/ja/docs/messaging-api/using-rich-menus/)
+
+## 2026-09-13 Cloudflare移行の実装
+
+- WorkerはNode.js・Next.jsランタイムを必要としない。署名は受信した生バイト列をWeb Cryptoで検証する。
+- ホームページのリンク・画像URLは `https://www.mihanada.site` を維持する。
+- Flexはホームページの生成り・墨色・藍色を使用。主ボタンは濃紺に統一。
+- LINEのネイティブFlexはWebフォントを指定できないため、色・余白・写真・文体でトーンを揃える。
+- Cloudflare公開、LINEシークレット登録、Webhook接続、既定リッチメニュー設定、実機テストは未完了。
+- CloudflareのGoogleログインはアカウント利用の確認待ち。公開済みとは扱わない。
+
+参考: [Cloudflare Web Crypto](https://developers.cloudflare.com/workers/runtime-apis/web-crypto/)、[Wrangler設定](https://developers.cloudflare.com/workers/wrangler/configuration/)

@@ -1,7 +1,9 @@
 import { test, after } from "node:test";
 import assert from "node:assert/strict";
 import crypto from "node:crypto";
-import { POST } from "../app/api/line/webhook/route";
+import worker from "../workers/line";
+const env = { LINE_CHANNEL_SECRET: "test-secret", LINE_CHANNEL_ACCESS_TOKEN: "test-token" };
+const POST = (request: Request) => worker.fetch(request, env);
 import { menuResponse } from "../lib/line";
 import { richMenu } from "../lib/line-rich-menu";
 
@@ -86,4 +88,32 @@ test("known postbacks respond and unknown postbacks are ignored", async () => {
   }));
   await POST(request(JSON.stringify({ events })));
   assert.equal(replies.length, 3);
+});
+
+
+test("Worker rejects other routes and methods, and fails closed without secrets", async () => {
+  assert.equal((await worker.fetch(new Request("https://example.com/health"), env)).status, 200);
+  assert.equal((await worker.fetch(new Request("https://example.com/health"), { ...env, LINE_CHANNEL_SECRET: "" })).status, 503);
+  assert.equal((await POST(new Request("https://example.com/unknown"))).status, 404);
+  assert.equal((await POST(new Request("https://example.com/api/line/webhook"))).status, 405);
+  assert.equal((await worker.fetch(request('{"events":[]}'), { ...env, LINE_CHANNEL_ACCESS_TOKEN: "" })).status, 503);
+});
+
+test("signature covers exact Unicode request bytes and rejects modified content", async () => {
+  const body = JSON.stringify({ events: [], destination: "日本語" });
+  assert.equal((await POST(request(body))).status, 200);
+  const signature = crypto.createHmac("sha256", "test-secret").update(body).digest("base64");
+  assert.equal((await POST(request(body + " ", signature))).status, 401);
+});
+
+test("upstream failure returns retryable error without exposing tokens or customer data", async () => {
+  const mock = globalThis.fetch;
+  try {
+    globalThis.fetch = async () => new Response("sensitive upstream body", { status: 500 });
+    const response = await POST(request(JSON.stringify({ events: [{
+      type: "message", replyToken: "private-token", message: { type: "text", text: "お問い合わせをしたい" },
+    }] })));
+    assert.equal(response.status, 502);
+    assert.deepEqual(await response.json(), { error: "LINE reply failed" });
+  } finally { globalThis.fetch = mock; }
 });
