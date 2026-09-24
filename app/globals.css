@@ -729,7 +729,9 @@ button{ font-family:inherit; cursor:pointer; }
 }
 @media (max-width:820px){
   .fl-hero-title-desktop{ display:none; }
-  .fl-hero-title-mobile{ display:inline; }
+  .fl-hero h1{ max-width:210px; font-size:clamp(27px,7vw,30px); line-height:1.45; letter-spacing:.04em; text-wrap:initial; }
+  .fl-hero-title-mobile{ display:block; }
+  .fl-hero-title-line{ display:block; white-space:nowrap; }
 }
 
 /* about grid */

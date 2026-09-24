@@ -90,11 +90,8 @@ export default function FishLeatherPage() {
                     ))}
                   </span>
                   <span className="fl-hero-title-mobile">
-                    {fl.hero.title.split("\n").map((l, i, arr) => (
-                      <span key={i}>
-                        {l}
-                        {i < arr.length - 1 && <br />}
-                      </span>
+                    {fl.hero.title.split("\n").map((l, i) => (
+                      <span key={i} className="fl-hero-title-line">{l}</span>
                     ))}
                   </span>
                 </h1>
