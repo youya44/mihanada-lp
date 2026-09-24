@@ -722,6 +722,15 @@ button{ font-family:inherit; cursor:pointer; }
 .fl-hero .hero-copy{ color:#fff; padding-bottom:clamp(56px,9vw,120px); padding-top:140px; width:100%; }
 .fl-hero .hero-sub{ color:rgba(255,255,255,.85); }
 .fl-hero .eyebrow{ color:var(--accent); opacity:1; }
+.fl-hero-title-mobile{ display:none; }
+@media (min-width:821px){
+  .fl-hero h1{ font-size:clamp(36px,4vw,60px); }
+  .fl-hero-title-line{ display:block; white-space:nowrap; }
+}
+@media (max-width:820px){
+  .fl-hero-title-desktop{ display:none; }
+  .fl-hero-title-mobile{ display:inline; }
+}
 
 /* about grid */
 .fl-about{ display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(36px,5vw,80px); align-items:start; }

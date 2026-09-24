@@ -84,12 +84,19 @@ export default function FishLeatherPage() {
               <div className="hero-inner reveal is-in">
                 <p className="eyebrow">{fl.hero.eyebrow}</p>
                 <h1>
-                  {fl.hero.title.split("\n").map((l, i, arr) => (
-                    <span key={i}>
-                      {l}
-                      {i < arr.length - 1 && <br />}
-                    </span>
-                  ))}
+                  <span className="fl-hero-title-desktop">
+                    {fl.hero.desktopTitle.split("\n").map((l, i) => (
+                      <span key={i} className="fl-hero-title-line">{l}</span>
+                    ))}
+                  </span>
+                  <span className="fl-hero-title-mobile">
+                    {fl.hero.title.split("\n").map((l, i, arr) => (
+                      <span key={i}>
+                        {l}
+                        {i < arr.length - 1 && <br />}
+                      </span>
+                    ))}
+                  </span>
                 </h1>
                 <p className="hero-sub">
                   {fl.hero.sub.split("\n").map((l, i, arr) => (
